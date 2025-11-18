@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Left or Right - Preguntas A/B</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Pantalla de configuración inicial -->
+    <div class="setup-screen" id="setupScreen">
+        <div class="setup-container">
+            <h1>Configurar Encuesta</h1>
+            <p class="setup-subtitle">Selecciona las preguntas que deseas incluir o agrega nuevas</p>
+            
+            <div class="setup-section">
+                <h2>Preguntas Recomendadas</h2>
+                <div class="questions-list" id="recommendedQuestions">
+                    <!-- Las preguntas recomendadas se crearán dinámicamente -->
+                </div>
+            </div>
+            
+            <div class="setup-section">
+                <h2>Agregar Pregunta Personalizada</h2>
+                <div class="custom-question-form">
+                    <input type="text" id="customQuestion" placeholder="Escribe tu pregunta aquí..." class="input-field">
+                    <div class="options-input">
+                        <input type="text" id="customOptionA" placeholder="Opción A" class="input-field">
+                        <input type="text" id="customOptionB" placeholder="Opción B" class="input-field">
+                    </div>
+                    <button class="add-question-btn" onclick="addCustomQuestion()">Agregar Pregunta</button>
+                </div>
+            </div>
+            
+            <div class="setup-actions">
+                <button class="start-survey-btn" id="startSurveyBtn" onclick="startSurvey()" disabled>
+                    Iniciar Encuesta (<span id="selectedCount">0</span> preguntas seleccionadas)
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Contenedor del juego (oculto inicialmente) -->
+    <div class="game-container" id="gameContainer" style="display: none;">
+        <div class="score">Pregunta: <span id="questionNumber">0</span> / <span id="totalQuestions">0</span></div>
+        <div class="question-container">
+            <h2 class="question" id="question"></h2>
+            <div class="options-container" id="optionsContainer">
+                <!-- Las opciones se crearán dinámicamente -->
+            </div>
+        </div>
+        <div class="instructions">
+            Elige A o B para continuar
+            <br>Presiona las teclas A o B, o haz clic en las opciones
+        </div>
+        <button class="finish-button" id="finishButton" onclick="finishGame()" style="display: none;">
+            Finalizar Juego
+        </button>
+        <div class="game-over" id="gameOver">
+            <div class="game-over-content">
+                <h2>¡Juego Terminado!</h2>
+                <p>Preguntas respondidas: <span id="finalScore">0</span></p>
+                <div class="results-container" id="resultsContainer">
+                    <!-- Los resultados se mostrarán aquí -->
+                </div>
+                <button onclick="resetGame()">Jugar de Nuevo</button>
+            </div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
